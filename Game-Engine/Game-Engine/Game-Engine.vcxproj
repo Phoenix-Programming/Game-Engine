@@ -144,6 +144,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cc" />
+    <ClCompile Include="NotCompiledLibraries\glad.c" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\README.md" />
