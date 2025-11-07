@@ -54,6 +54,16 @@ bool InitGLAD()
 
 #pragma endregion
 
+void processInput(GLFWwindow* window)
+{
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+		glfwSetWindowShouldClose(window, true);
+	}
+	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
+		// some spacebar function
+	}
+}
+
 int main()
 {
 	std::cout << "Hello world!\n";
@@ -69,6 +79,8 @@ int main()
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
+
+		processInput(window);
 	}
 
 	DeInitGLFW();
