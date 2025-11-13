@@ -1,6 +1,4 @@
 #include <iostream>
-#include <glm/glm.hpp>
-
 #include "engine.h"
 
 int main()

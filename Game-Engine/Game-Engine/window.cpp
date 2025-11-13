@@ -8,8 +8,6 @@ Window::Window(int width, int height) :
 {
 	if (!glfwInitialized)
 		glfwInitialized = InitGLFW();
-	if (!gladInitialized)
-		gladInitialized = InitGLAD();
 
 	window = glfwCreateWindow(width, height, "Game Engine Project", NULL, NULL);
 	if (window == NULL)
@@ -19,6 +17,10 @@ Window::Window(int width, int height) :
 		return;
 	}
 	windows.push_back(this);
+	glfwMakeContextCurrent(window);
+
+	if (!gladInitialized)
+		gladInitialized = InitGLAD();
 }
 
 bool Window::ShouldClose()
@@ -28,7 +30,6 @@ bool Window::ShouldClose()
 
 void Window::Start()
 {
-	glfwMakeContextCurrent(window);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 }
 
@@ -72,15 +73,20 @@ bool Window::InitGLFW()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+	std::cout << "Successfully Initialized GLFW\n";
 	return true;
 }
 
 bool Window::InitGLAD()
 {
-	if (gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+	{
+		std::cout << "Error Initializing GLAD\n";
 		return false;
+	}
 
-	std::cout << "Error Initializing GLAD\n";
+	std::cout << "Successfully Initialized GLAD\n";
 	return true;
 }
 
