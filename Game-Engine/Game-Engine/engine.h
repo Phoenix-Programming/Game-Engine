@@ -3,22 +3,36 @@
 
 #include <vector>
 
+#include "window.h"
 #include "game_object.h"
 #include "renderable.h"
 
-class Game {
- public:
-  // registers a GameObject so that it will be updated and drawn every frame
-  // this should call Start on each component of the object
-  void AddObject(GameObject object);
+class Engine
+{
+public:
+    Window window;
 
-  // advance one frame.
-  // this should call Update and possibly Draw for each
-  // component in each tracked object
-  void Tick();
+    Engine();
 
-  int windowWidth, windowHeight;
-  std::vector<GameObject> objects;
+    // Called once at the start
+    // Creates the window and similar processes
+    // Not the same Start as the one that all GameObjects have
+    // That Start will be called by AddObject
+    void Start();
+    // advance one frame
+    // this should call Update for each
+    // component on each GameObject
+    bool Update();
+    // Calls Close functions on all GameObjects
+    void Close();
+    // registers a GameObject so that it will be updated and drawn every frame
+    // this should call Start on each component of the object
+    void AddObject(GameObject object);
+    // Executes Start, Update repeatedly, and Close
+    void Execute();
+    
+    int windowWidth, windowHeight;
+    std::vector<GameObject> objects;
 };
 
 #endif  // ENGINE_ENGINE_H_
