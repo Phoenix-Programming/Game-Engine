@@ -143,8 +143,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="engine.cc" />
     <ClCompile Include="main.cc" />
     <ClCompile Include="NotCompiledLibraries\glad.c" />
+    <ClCompile Include="window.cc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\README.md" />
@@ -154,6 +156,7 @@
     <ClInclude Include="engine.h" />
     <ClInclude Include="game_object.h" />
     <ClInclude Include="renderable.h" />
+    <ClInclude Include="window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
