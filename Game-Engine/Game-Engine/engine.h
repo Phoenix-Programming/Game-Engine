@@ -6,11 +6,14 @@
 #include "window.h"
 #include "game_object.h"
 #include "renderable.h"
+#include "input.h"
 
 class Engine
 {
 public:
     Window window;
+    InputHandler input;
+    Keybind closeWindowBind; // MOVE THIS TO GAME
 
     Engine();
 

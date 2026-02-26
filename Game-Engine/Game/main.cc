@@ -4,7 +4,7 @@
 
 int main()
 {
-	std::cout << "Hello world!\n";
+	std::cout << "Potato!\n";
 
 	Engine engine;
 	engine.Execute();
